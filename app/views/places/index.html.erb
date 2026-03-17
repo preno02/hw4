@@ -1,11 +1,20 @@
-<h1>Places</h1>
 
-<ul>
-  <% for place in @places %>
-    <li><a href="/places/<%= place["id"] %>"><%= place["name"] %></a></li>
-  <% end %>
-</ul>
+<div class="container py-4">
+  <h1 class="mb-4">Places</h1>
 
-<p>
-  <a href="/places/new">New place</a>
-</p>
+  <div class="row row-cols-1 row-cols-md-3 g-4 mb-4">
+    <% for place in @places %>
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body d-flex align-items-center">
+            <a href="/places/<%= place["id"] %>" class="card-title h5 mb-0 text-decoration-none stretched-link">
+              <%= place["name"] %>
+            </a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <a href="/places/new" class="btn btn-primary">New Place</a>
+</div>

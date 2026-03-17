@@ -1,14 +1,18 @@
 <h1>Login</h1>
 
+
+
+</form>
 <form action="/sessions" method="post">
+  <div class="mb-3">
+    <label for="email" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text"</div>
+  </div>
+  <div class="mb-3">
+    <label for="password_input" class="form-label">Password</label>
+    <input type="password" class="form-control" id="password_input">
+  </div>
 
- <p>
-    <label for="email">Email</label>
-    <input type="text" name="email" id="emial_input">
-  </p>
-    <label for="password_input">Password</label>
-    <input type="password" name="password" id="password_input">
-  </p>
-
-  <button>Login<button>
+  <button type="login" class="btn btn-primary">Login</button>
 </form>

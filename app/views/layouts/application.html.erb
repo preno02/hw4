@@ -6,35 +6,37 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <link rel="stylesheet" href="/stylesheets/application.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/stylesheets/application.css">    
   </head>
 
   <body>
-    <div>
-      <%= flash["notice"] %>
-    </div>
-    <div>
-      <% @user = User.find_by({ "id" => session["user_id"] }) %>
-      <% if @user == nil %>
-   <!-- if no user logged-in, display signup and login links -->
-        <a href="/users/new">Signup</a>
-        |
-        <a href="/login">Login</a>
-        
-      <% else %>
-        <!-- else, if user logged-in, display user name and logout link -->
-        <%= @user["email"] %>
-        |
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+      <div class="container">
+        <a class="navbar-brand" href="/places">Tacostagram</a>
 
-        <a href="/logout">Logout</a>
+        <div class="d-flex align-items-center gap-3">
+          <% @user = User.find_by({ "id" => session["user_id"] }) %>
+          <% if @user == nil %>
+            <a href="/users/new" class="btn btn-outline-light btn-sm">Signup</a>
+            <a href="/login" class="btn btn-light btn-sm">Login</a>
+          <% else %>
+            <span class="text-light"><%= @user["email"] %></span>
+            <a href="/logout" class="btn btn-outline-light btn-sm">Logout</a>
+          <% end %>
+        </div>
+      </div>
+    </nav>
 
+    <div class="container">
+      <% if flash["notice"] %>
+        <div class="alert alert-info mb-4"><%= flash["notice"] %></div>
       <% end %>
 
-
-
-      
+      <%= yield %>
     </div>
 
-    <%= yield %>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   </body>
 </html>
