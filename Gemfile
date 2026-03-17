@@ -6,14 +6,14 @@ ruby "4.0.1"
 gem "rails", "~> 8.1.2"
 gem "puma", ">= 5.0"
 gem "bcrypt", "~> 3.1.7"
-gem "sqlite3", "~> 2.1"
+
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # gem "csv"
 gem "cgi"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
-  gem "sqlite3", "~> 2.1"
+
 
 end
 
